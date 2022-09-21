@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "accounts-manager-ui"
+  "defaultProject": "accounts-manager-ui",
+  "cli": {
+    "analytics": false
+  }
 }
