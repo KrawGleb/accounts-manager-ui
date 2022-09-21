@@ -41,7 +41,7 @@ export class RegistrationComponent {
     let request = {
       Name: this.formGroup.value.Name,
       Email: this.formGroup.value.Email,
-      Password: this.formGroup.value.Passwords.Password,
+      Password: this.formGroup.value.Password,
     };
 
     this.authService
@@ -50,8 +50,8 @@ export class RegistrationComponent {
         tap((response) => {
           this.authService
             .login({
-              Email: this.formGroup.value.Email,
-              Password: this.formGroup.value.Passwords.Password,
+              Email: request.Email,
+              Password: request.Password,
             })
             .pipe(tap(() => this.router.navigateByUrl('/table')))
             .subscribe();
