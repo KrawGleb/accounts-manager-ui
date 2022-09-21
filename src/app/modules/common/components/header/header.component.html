@@ -1,0 +1,9 @@
+<div class="header">
+  <button *ngIf="!isSignedIn()" class="btn btn-ligth" [routerLink]="'/login'">
+    Sign In
+  </button>
+  <button *ngIf="isSignedIn()" class="btn btn-ligth" (click)="signOut()">
+    Sign Out
+  </button>
+  <button class="btn btn-ligth" [routerLink]="'/register'">Register</button>
+</div>
