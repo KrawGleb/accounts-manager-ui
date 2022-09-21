@@ -39,28 +39,38 @@
                     </div>
                   </div>
 
-                  <div formGroupName="Passwords">
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <input
-                          type="password"
-                          class="form-control"
-                          placeholder="Password"
-                          formControlName="Password"
-                        />
-                      </div>
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        formControlName="Password"
+                      />
                     </div>
+                  </div>
 
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <input
-                          type="password"
-                          class="form-control"
-                          placeholder="Repeat your password"
-                          formControlName="ConfirmPassword"
-                        />
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Repeat your password"
+                        formControlName="ConfirmPassword"
+                      />
+
+                      <div
+                        *ngIf="
+                          (password?.touched || password?.dirty) &&
+                          (confirmPassword?.touched ||
+                            confirmPassword?.dirty) &&
+                          password?.value !== confirmPassword?.value
+                        "
+                        class="error-message"
+                      >
+                        Passwords must match
                       </div>
                     </div>
                   </div>
@@ -76,7 +86,15 @@
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" class="btn btn-primary btn-lg">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg"
+                      [disabled]="
+                        (password?.touched || password?.dirty) &&
+                        (confirmPassword?.touched || confirmPassword?.dirty) &&
+                        password?.value !== confirmPassword?.value
+                      "
+                    >
                       Register
                     </button>
                   </div>
